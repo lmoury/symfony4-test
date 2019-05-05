@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Page d'acccueill'{% endblock %}
+
+{% block body %}
+<div class="example-wrapper container">
+    <div class="row flex">
+        {% for property in properties %}
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{{ path('property.show', {id: property.id, slug: property.slug})}}">{{ property.title }}</a></h4>
+                        <p class="card-text">{{ property.city }}</p>
+                        <a href="#" class="card-link">{{ property.adress }}</a>
+                        <div>{{ property.getFormatPrice }} Euro</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

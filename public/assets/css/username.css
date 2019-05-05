@@ -1,0 +1,66 @@
+.pseudoUser3
+{
+  color: white;
+  text-shadow: 0px 0px 5px #ff0000, 0px 0px 5px #ff0000;
+  font-weight: bold;
+}
+
+.pseudoUser3::before
+{
+  font-family: "FontAwesome";
+  content: "";
+  padding-right: 4px;
+  display: inline-block;
+}
+
+.pseudoUser2
+{
+  color: #2ecc71;
+  text-shadow: 1px 0px 2px #000000, 2px 0px 5px #000000, 1px 0px 3px #000000, 0px 1px 2px #080808, 0px 1px 4px #020202, 0px 1px 3px #040404;
+}
+
+.pseudoUser5
+{
+  color: gold;
+  text-shadow: 1px 0px 2px #000000, 2px 0px 5px #000000, 1px 0px 3px #000000, 0px 1px 2px #080808, 0px 1px 4px #020202, 0px 1px 3px #040404;
+  background: transparent url(../img/extra/7.gif) no-repeat;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+.pseudoUser4
+{
+  color: #02fcfc;
+  text-shadow: 1px 0px 2px #000000, 2px 0px 5px #000000, 1px 0px 3px #000000, 0px 1px 2px #080808, 0px 1px 4px #020202, 0px 1px 3px #040404;
+  font-weight: bold;
+}
+.pseudoUser4::before
+{
+  font-family: "FontAwesome";
+  content: "";
+  padding-right: 4px;
+  display: inline-block;
+}
+
+.pseudoUser6
+{
+  color: yellow;
+  text-shadow: 1px 0px 2px #000000, 2px 0px 5px #000000, 1px 0px 3px #000000, 0px 1px 2px #080808, 0px 1px 4px #020202, 0px 1px 3px #040404;
+  font-weight: bold;
+}
+
+.pseudoUser6::before
+{
+  font-family: "FontAwesome";
+  content: "";
+  padding-right: 4px;
+  display: inline-block;
+}
+
+.pseudoUser1
+{
+  color: white;
+  text-shadow: 1px 0px 2px black, 2px 0px 2px black, 3px 3px 6px black, -2px 0px 6px black, 0px 0px 5px black;
+  font-weight: bold;
+  text-decoration: line-through;
+}

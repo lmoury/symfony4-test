@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endfor %}
+<div class="container mt-4 mb-4">
+
+{% if error %}
+    {{ error.messagekey | trans(error.messagedata, 'security') }}
+{% endif %}
+
+    <form action="{{ path('login') }}" method="post">
+
+        <div class="input-group mb-3">
+            <label for="username">Votre nom : </label>
+            <input type="text" class="form-control" name="_username" id="username" value="{{ lastUsername }}"  />
+        </div>
+
+        <div class="input-group mb-3">
+            <label for="password">Votre mot de passe : </label>
+            <input type="password" class="form-control" name="_password" id="password" />
+        </div>
+
+        <div class="text-center btn-container">
+            <button class="btn" type="submit" >Connexion</button>
+        </div>
+
+
+    </form>
+</div>
+{% endblock %}
