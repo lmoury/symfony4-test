@@ -3,10 +3,32 @@
 {% block title %}Hello PropertyController!{% endblock %}
 
 {% block body %}
-
-<div class="example-wrapper">
-    <h1>Hello testyg!</h1>
-
-    This friendly message is coming from:
+<div class="jumbotron">
+    {{ form_start(form) }}
+    <div class="form-row">
+        <div class="col">
+            {{ form_row(form.minSurface) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.maxPrice) }}
+        </div>
+        <div class="col">
+            <button class="btn btn-primary">{{ button|default('Créer')}}</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>
+<div class="container mt-4">
+    <h1>tous nos bien</h1>
+    <div class="row">
+        {% for property in properties %}
+        <div class="col-md-4">
+            {{ include("property/_property.html.twig") }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        {{ knp_pagination_render(properties) }}
+    </div>
 </div>
 {% endblock %}

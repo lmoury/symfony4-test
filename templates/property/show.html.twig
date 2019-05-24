@@ -19,7 +19,7 @@
 </div>
 
 <div class="container mt-4">
-
+    {{ property.categorie.categorie }}
     <p>
         {{ property.description | nl2br }}
     </p>
@@ -48,9 +48,13 @@
                     <td>Chauffage</td>
                     <td>{{ property.heatType }}</td>
                 </tr>
+                <tr>
+                    <td>Date creation</td>
+                    <td>{{ changeDate(property.createdAt| date('d-m-Y H:i:s') ) }}</td>
+                </tr>
             </table>
         </div>
-        
+
         <div class="col-md-4">
             <h2>Spécificiter</h2>
         </div>

@@ -4,9 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Property;
 use App\Repository\PropertyRepository;
+use App\Entity\PropertySearch;
+use App\Form\PropertySearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 class PropertyController extends AbstractController
 {
@@ -26,14 +30,23 @@ class PropertyController extends AbstractController
      * @Route("/bien", name="property.index")
      * @return Response
      */
-    public function index(): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        // $property = $this->resporitory->findAllVisible();
-        // dump($property);
-        // $property[0]->setSold(true);
+        $search = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class, $search);
+        $form->handleRequest($request);
+
+        $properties =  $paginator->paginate(
+            $this->repository->findAllVisibleQuery(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
+        // dump($properties);
+        // $properties[0]->setSold(true);
         // $this->em->flush();
-        // $property = new Property();
-        // $property->setTitle('mon premier bien')
+        // $properties = new Property();
+        // $properties->setTitle('mon premier bien')
         //     ->setPrice(200000)
         //     ->setRooms(4)
         //     ->setBadrooms(3)
@@ -45,10 +58,12 @@ class PropertyController extends AbstractController
         //     ->setAdress('boulevard des canadiens')
         //     ->setPostalCode(7711);
         // $em = $this->getDoctrine()->getManager();
-        // $em->persist($property);
+        // $em->persist($properties);
         // $em->flush();
         return $this->render('property/index.html.twig', [
             'current_url' => 'bien',
+            'properties' => $properties,
+            'form' => $form->createView()
         ]);
     }
 
@@ -59,6 +74,8 @@ class PropertyController extends AbstractController
      */
     public function show(Property $property, string $slug): Response
     {
+        //dump($property->getCategorie()->getCategorie());
+        //die();
         if($property->getSlug() !== $slug) {
             return $this->redirectToRoute('property.show', [
                 'id' => $property->getId(),
